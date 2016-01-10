@@ -1,0 +1,29 @@
+{
+  "name": "react-native-eventsource",
+  "version": "0.0.1",
+  "description": "A react-native component for EventSource: Server-Sent Events for iOS and Android",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JonnyBGod/react-native-eventsource"
+  },
+  "keywords": [
+    "react-native",
+    "react-component",
+    "ios",
+    "android",
+    "event-source",
+    "sse"
+  ],
+  "author": "João Ribeiro <jonnybgod@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "react-native": ">=0.5.0"
+  },
+  "peerDependencies": {
+    "react-native": ">=0.5.0"
+  }
+}

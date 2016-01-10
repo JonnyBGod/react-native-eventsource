@@ -1,0 +1,13 @@
+{
+	"name": "example",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"start": "node_modules/react-native/packager/packager.sh",
+		"postinstall": "rnpm link"
+	},
+	"dependencies": {
+    "react-native": "^0.17.x",
+    "react-native-eventsource": "file:../"
+  }
+}
