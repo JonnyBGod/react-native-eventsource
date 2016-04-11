@@ -70,9 +70,11 @@ public class RNEventSourceModule extends ReactContextBaseJavaModule {
             while ((type = reader.next()) != SseEventType.EOS) {
               switch (type) {
                 case DATA:
-                  String message;
+                  String name;
+                  String data;
                   try {
-                    message = reader.getData().toString();
+                    name = reader.getName();
+                    data = reader.getData().toString();
                   } catch (IOException e) {
                     notifyEventSourceFailed(id, e.getMessage());
                     return;
@@ -80,8 +82,9 @@ public class RNEventSourceModule extends ReactContextBaseJavaModule {
 
                   WritableMap params = Arguments.createMap();
                   params.putInt("id", id);
-                  params.putString("message", message);
-                  sendEvent("eventsourceMessage", params);
+                  params.putString("name", name);
+                  params.putString("data", data);
+                  sendEvent("eventsourceEvent", params);
                   break;
                 case EMPTY:
                   break;

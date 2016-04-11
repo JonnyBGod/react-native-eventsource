@@ -50,14 +50,14 @@ class EventSource extends EventSourceBase {
 
   _registerEvents(id: number): void {
     this._subs = [
-      DeviceEventEmitter.addListener('eventsourceMessage', ev => {
+      DeviceEventEmitter.addListener('eventsourceEvent', ev => {
         if (ev.id !== id) {
           return;
         }
-        var event = new EventSourceEvent('message', {
-          message: ev.message
+        var event = new EventSourceEvent(ev.name, {
+          data: ev.message
         });
-        this.onmessage && this.onmessage(event);
+        if( ev.name === 'message' && this.onmessage ) this.onmessage(event);
         this.dispatchEvent(event);
       }),
       DeviceEventEmitter.addListener('eventsourceOpen', ev => {
