@@ -82,7 +82,7 @@ public class RNEventSourceModule extends ReactContextBaseJavaModule {
 
                   WritableMap params = Arguments.createMap();
                   params.putInt("id", id);
-                  params.putString("name", name);
+                  params.putString("type", name != null ? name : "message");
                   params.putString("data", data);
                   sendEvent("eventsourceEvent", params);
                   break;

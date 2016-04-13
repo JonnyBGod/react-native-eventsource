@@ -54,10 +54,10 @@ class EventSource extends EventSourceBase {
         if (ev.id !== id) {
           return;
         }
-        var event = new EventSourceEvent(ev.name, {
+        var event = new EventSourceEvent(ev.type, {
           data: ev.message
         });
-        if( ev.name === 'message' && this.onmessage ) this.onmessage(event);
+        if( ev.type === 'message' && this.onmessage ) this.onmessage(event);
         this.dispatchEvent(event);
       }),
       DeviceEventEmitter.addListener('eventsourceOpen', ev => {

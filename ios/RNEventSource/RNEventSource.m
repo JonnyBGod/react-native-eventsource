@@ -61,8 +61,9 @@ RCT_EXPORT_METHOD(connect:(NSString *)URLString sourceID:(nonnull NSNumber *)sou
   }];
 
   [source onMessage: ^(Event *e) {
-    [_bridge.eventDispatcher sendDeviceEventWithName:@"eventsourceMessage" body:@{
-      @"message": RCTNullIfNil(e.data),
+    [_bridge.eventDispatcher sendDeviceEventWithName:@"eventsourceEvent" body:@{
+      @"type": e.event ?: @"message",
+      @"data": RCTNullIfNil(e.data),
       @"id": source.reactTag
     }];
   }];
