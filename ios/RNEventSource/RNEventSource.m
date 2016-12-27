@@ -4,6 +4,7 @@
 #import "RCTConvert.h"
 #import "RCTEventDispatcher.h"
 #import "RCTUtils.h"
+#import <objc/runtime.h>
 
 #import "EventSource.h"
 
