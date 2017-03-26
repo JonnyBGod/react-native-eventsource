@@ -15,7 +15,7 @@ see something that makes you go :frowning: please let me know. PRs are always we
 ```bash
 npm install react-native-eventsource --save
 
-rnpm link react-native-eventsource
+react-native link react-native-eventsource
 ```
 
 ## Usage

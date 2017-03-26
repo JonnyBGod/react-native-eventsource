@@ -1,9 +1,9 @@
 #import "RNEventSource.h"
 
-#import "RCTBridge.h"
-#import "RCTConvert.h"
-#import "RCTEventDispatcher.h"
-#import "RCTUtils.h"
+#import <React/RCTBridge.h>
+#import <React/RCTConvert.h>
+#import <React/RCTEventDispatcher.h>
+#import <React/RCTUtils.h>
 #import <objc/runtime.h>
 
 #import "EventSource.h"
@@ -40,7 +40,7 @@ RCT_EXPORT_MODULE();
 }
 
 RCT_EXPORT_METHOD(connect:(NSString *)URLString sourceID:(nonnull NSNumber *)sourceID)
-{ 
+{
   NSURL *serverURL = [NSURL URLWithString:URLString];
 
   EventSource *source = [EventSource eventSourceWithURL:serverURL];
@@ -57,7 +57,7 @@ RCT_EXPORT_METHOD(connect:(NSString *)URLString sourceID:(nonnull NSNumber *)sou
       @"message":e.error.userInfo[@"NSLocalizedDescription"],
       @"id": source.reactTag
     }];
-    
+
     [source close];
   }];
 
@@ -77,7 +77,7 @@ RCT_EXPORT_METHOD(connect:(NSString *)URLString sourceID:(nonnull NSNumber *)sou
 }
 
 RCT_EXPORT_METHOD(close:(nonnull NSNumber *)sourceID)
-{ 
+{
   [_sources[sourceID] close];
   [_sources removeObjectForKey:sourceID];
 
