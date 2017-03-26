@@ -45,12 +45,12 @@ typedef void (^EventSourceEventHandler)(Event *event);
 /// Returns a new instance of EventSource with the specified URL.
 ///
 /// @param URL The URL of the EventSource.
-/// @param timeoutInterval The request timeout interval in seconds. See <tt>NSURLRequest</tt> for more details. Default: 5 minutes.
 + (instancetype)eventSourceWithURL:(NSURL *)URL;
 
 /// Returns a new instance of EventSource with the specified URL.
 ///
 /// @param URL The URL of the EventSource.
+/// @param timeoutInterval The request timeout interval in seconds. See <tt>NSURLRequest</tt> for more details. Default: 5 minutes.
 + (instancetype)eventSourceWithURL:(NSURL *)URL timeoutInterval:(NSTimeInterval)timeoutInterval;
 
 /// Creates a new instance of EventSource with the specified URL.
@@ -79,6 +79,8 @@ typedef void (^EventSourceEventHandler)(Event *event);
 /// @param handler The handler for the Open event.
 - (void)onOpen:(EventSourceEventHandler)handler;
 
+- (void)onReadyStateChanged:(EventSourceEventHandler)handler;
+
 /// Registers an event handler for a named event.
 ///
 /// @param eventName The name of the event you registered.
@@ -95,3 +97,4 @@ typedef void (^EventSourceEventHandler)(Event *event);
 extern NSString *const MessageEvent;
 extern NSString *const ErrorEvent;
 extern NSString *const OpenEvent;
+extern NSString *const ReadyStateEvent;
