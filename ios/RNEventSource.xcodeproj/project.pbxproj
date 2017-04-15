@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55C5EF211EA2A263005345B7 /* TRVSEventSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C5EF1D1EA2A263005345B7 /* TRVSEventSource.m */; };
+		55C5EF221EA2A263005345B7 /* TRVSServerSentEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C5EF201EA2A263005345B7 /* TRVSServerSentEvent.m */; };
 		911488971B28A9A700A81437 /* RNEventSource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 911488961B28A9A700A81437 /* RNEventSource.h */; };
 		911488991B28A9A700A81437 /* RNEventSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 911488981B28A9A700A81437 /* RNEventSource.m */; };
 		9114889F1B28A9A700A81437 /* libRNEventSource.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 911488931B28A9A700A81437 /* libRNEventSource.a */; };
-		917EB0811B28B00200EBBC2F /* EventSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 917EB0801B28B00200EBBC2F /* EventSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,13 +38,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		55C5EF1C1EA2A263005345B7 /* TRVSEventSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRVSEventSource.h; path = TRVSEventSource/TRVSEventSource.h; sourceTree = "<group>"; };
+		55C5EF1D1EA2A263005345B7 /* TRVSEventSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRVSEventSource.m; path = TRVSEventSource/TRVSEventSource.m; sourceTree = "<group>"; };
+		55C5EF1E1EA2A263005345B7 /* TRVSEventSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRVSEventSourceDelegate.h; path = TRVSEventSource/TRVSEventSourceDelegate.h; sourceTree = "<group>"; };
+		55C5EF1F1EA2A263005345B7 /* TRVSServerSentEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRVSServerSentEvent.h; path = TRVSEventSource/TRVSServerSentEvent.h; sourceTree = "<group>"; };
+		55C5EF201EA2A263005345B7 /* TRVSServerSentEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRVSServerSentEvent.m; path = TRVSEventSource/TRVSServerSentEvent.m; sourceTree = "<group>"; };
 		911488931B28A9A700A81437 /* libRNEventSource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNEventSource.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		911488961B28A9A700A81437 /* RNEventSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNEventSource.h; sourceTree = "<group>"; };
 		911488981B28A9A700A81437 /* RNEventSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNEventSource.m; sourceTree = "<group>"; };
 		9114889E1B28A9A700A81437 /* RNEventSourceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RNEventSourceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		911488A31B28A9A700A81437 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		917EB07F1B28B00200EBBC2F /* EventSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventSource.h; sourceTree = "<group>"; };
-		917EB0801B28B00200EBBC2F /* EventSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55C5EF231EA2A26D005345B7 /* TRVSEventSource */ = {
+			isa = PBXGroup;
+			children = (
+				55C5EF1C1EA2A263005345B7 /* TRVSEventSource.h */,
+				55C5EF1D1EA2A263005345B7 /* TRVSEventSource.m */,
+				55C5EF1E1EA2A263005345B7 /* TRVSEventSourceDelegate.h */,
+				55C5EF1F1EA2A263005345B7 /* TRVSServerSentEvent.h */,
+				55C5EF201EA2A263005345B7 /* TRVSServerSentEvent.m */,
+			);
+			name = TRVSEventSource;
+			sourceTree = "<group>";
+		};
 		9114888A1B28A9A700A81437 = {
 			isa = PBXGroup;
 			children = (
@@ -86,8 +102,7 @@
 		911488951B28A9A700A81437 /* RNEventSource */ = {
 			isa = PBXGroup;
 			children = (
-				917EB07F1B28B00200EBBC2F /* EventSource.h */,
-				917EB0801B28B00200EBBC2F /* EventSource.m */,
+				55C5EF231EA2A26D005345B7 /* TRVSEventSource */,
 				911488961B28A9A700A81437 /* RNEventSource.h */,
 				911488981B28A9A700A81437 /* RNEventSource.m */,
 			);
@@ -191,7 +206,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				911488991B28A9A700A81437 /* RNEventSource.m in Sources */,
-				917EB0811B28B00200EBBC2F /* EventSource.m in Sources */,
+				55C5EF211EA2A263005345B7 /* TRVSEventSource.m in Sources */,
+				55C5EF221EA2A263005345B7 /* TRVSServerSentEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
