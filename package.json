@@ -1,6 +1,6 @@
 {
-  "name": "react-native-eventsource",
-  "version": "0.0.2",
+  "name": "@huston007/react-native-eventsource",
+  "version": "0.1.0",
   "description": "A react-native component for EventSource: Server-Sent Events for iOS and Android",
   "main": "index.js",
   "scripts": {
