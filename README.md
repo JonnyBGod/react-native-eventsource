@@ -1,6 +1,9 @@
 [![npm version](https://img.shields.io/npm/v/react-native-eventsource.svg?style=flat)](https://www.npmjs.com/package/react-native-eventsource)
 
 react-native EventSource
+_NOTE_: Comparing to base repository, this fork 
+uses [travisjeffery/TRVSEventSource](https://github.com/travisjeffery/TRVSEventSource) library
+as base for iOS implementation.
 =========================
 
 Server-Sent Events for your React Native apps!
@@ -75,7 +78,7 @@ var example = React.createClass({
 
 @jordanbyron for the [EventSource](https://github.com/jordanbyron/react-native-event-source) for react-native for iOS inspiration.
 
-@neilco for the [EventSource](https://github.com/neilco/EventSource) for iOS.
+@travisjeffery for the [TRVSEventSource](https://github.com/travisjeffery/TRVSEventSource) for iOS.
 @kaazing for the [EventSource](https://github.com/kaazing/java.client) for Android.
 
 ## License

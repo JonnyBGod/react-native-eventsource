@@ -55,7 +55,7 @@ class EventSource extends EventSourceBase {
           return;
         }
         var event = new EventSourceEvent(ev.type, {
-          data: ev.message
+          data: ev.message || ev.data
         });
         if( ev.type === 'message' && this.onmessage ) this.onmessage(event);
         this.dispatchEvent(event);

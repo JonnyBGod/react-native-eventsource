@@ -77,6 +77,7 @@ public class SseEventStream {
     private String                 sseLocation;
     private long                   retry = 3000; // same as actionscript implementation
     private boolean                immediateReconnect = false;
+    private String                 name = MESSAGE; // event name stores here between data receiving progress events
     private String                 messageBuffer = "";
     private HttpRequest            sseSource;
     private AtomicBoolean          progressEventReceived = new AtomicBoolean(false);
@@ -188,7 +189,7 @@ public class SseEventStream {
             messageBuffer = messageBuffer + message;
             String field = null;
             String value = null;
-            String name = MESSAGE;
+            name = name != null ? name : MESSAGE;
             String data = "";
             immediateReconnect = false;
             while (!aborted && !errored) {
@@ -204,6 +205,7 @@ public class SseEventStream {
                             dataBuffer.replace(dataBufferlength - 1, dataBufferlength, "");
                         }
                         doMessage(name, dataBuffer.toString());
+                        name = null;
                         dataBuffer.setLength(0);
                     }
                 }
