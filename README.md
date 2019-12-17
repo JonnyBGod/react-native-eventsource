@@ -1,3 +1,5 @@
+# [NOTICE: This repo is not maintained. Please let me know if you want to take over.]
+
 [![npm version](https://img.shields.io/npm/v/react-native-eventsource.svg?style=flat)](https://www.npmjs.com/package/react-native-eventsource)
 
 react-native EventSource
