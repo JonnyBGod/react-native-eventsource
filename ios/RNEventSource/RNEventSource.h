@@ -1,9 +1,13 @@
-#import "RCTBridgeModule.h"
-#import "EventSource.h"
+#import "React/RCTBridgeModule.h"
+#import "TRVSEventSource/TRVSEventSource.h"
 
-@interface RNEventSource : NSObject <RCTBridgeModule> {
-    EventSource *eventSource;
+@interface RNEventSource : NSObject <RCTBridgeModule, TRVSEventSourceDelegate> {
+    TRVSEventSource *eventSource;
 }
 
-@property (nonatomic, retain) EventSource *eventSource;
+- (void)eventSourceDidOpen:(TRVSEventSource *)eventSource;
+- (void)eventSource:(TRVSEventSource *)eventSource didReceiveEvent:(TRVSServerSentEvent *)event;
+- (void)eventSource:(TRVSEventSource *)eventSource didFailWithError:(NSError *)error;
+
+@property (nonatomic, retain) TRVSEventSource *eventSource;
 @end

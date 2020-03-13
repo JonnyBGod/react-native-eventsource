@@ -6,9 +6,9 @@
 #import <React/RCTUtils.h>
 #import <objc/runtime.h>
 
-#import "EventSource.h"
+#import "TRVSEventSource/TRVSEventSource.h"
 
-@implementation EventSource (React)
+@implementation TRVSEventSource (React)
 
 - (NSNumber *)reactTag
 {
@@ -24,7 +24,7 @@
 
 @implementation RNEventSource
 {
-    NSMutableDictionary<NSNumber *, EventSource *> *_sources;
+    NSMutableDictionary<NSNumber *, TRVSEventSource *> *_sources;
 }
 
 @synthesize eventSource;
@@ -34,7 +34,7 @@ RCT_EXPORT_MODULE();
 
 - (void)dealloc
 {
-  for (EventSource *source in _sources.allValues) {
+  for (TRVSEventSource *source in _sources.allValues) {
     [source close];
   }
 }
@@ -43,31 +43,11 @@ RCT_EXPORT_METHOD(connect:(NSString *)URLString sourceID:(nonnull NSNumber *)sou
 {
   NSURL *serverURL = [NSURL URLWithString:URLString];
 
-  EventSource *source = [EventSource eventSourceWithURL:serverURL];
+  TRVSEventSource *source = [[TRVSEventSource alloc] initWithURL:serverURL];
+  source.delegate = self;
   source.reactTag = sourceID;
-
-  [source onOpen: ^(Event *e) {
-    [_bridge.eventDispatcher sendDeviceEventWithName:@"eventsourceOpen" body:@{
-      @"id": source.reactTag
-    }];
-  }];
-
-  [source onError: ^(Event *e) {
-    [_bridge.eventDispatcher sendDeviceEventWithName:@"eventsourceFailed" body:@{
-      @"message":e.error.userInfo[@"NSLocalizedDescription"],
-      @"id": source.reactTag
-    }];
-
-    [source close];
-  }];
-
-  [source onMessage: ^(Event *e) {
-    [_bridge.eventDispatcher sendDeviceEventWithName:@"eventsourceEvent" body:@{
-      @"type": e.event ?: @"message",
-      @"data": RCTNullIfNil(e.data),
-      @"id": source.reactTag
-    }];
-  }];
+  
+  [source open];
 
   if (!_sources) {
     _sources = [NSMutableDictionary new];
@@ -75,6 +55,36 @@ RCT_EXPORT_METHOD(connect:(NSString *)URLString sourceID:(nonnull NSNumber *)sou
 
   _sources[sourceID] = source;
 }
+
+
+- (void)eventSourceDidOpen:(TRVSEventSource *)eventSource
+{
+    [_bridge.eventDispatcher sendDeviceEventWithName:@"eventsourceOpen" body:@{
+      @"id": eventSource.reactTag
+    }];
+}
+
+- (void)eventSource:(TRVSEventSource *)eventSource didFailWithError:(NSError *)error
+{
+    [_bridge.eventDispatcher sendDeviceEventWithName:@"eventsourceFailed" body:@{
+      @"message": error.localizedDescription,
+      @"id": eventSource.reactTag
+    }];
+    
+    [eventSource close];
+}
+
+- (void)eventSource:(TRVSEventSource *)eventSource didReceiveEvent:(TRVSServerSentEvent *)event
+{
+    NSString *data = [[NSString alloc] initWithData:event.data encoding:NSUTF8StringEncoding];
+
+    [_bridge.eventDispatcher sendDeviceEventWithName:@"eventsourceEvent" body:@{
+      @"type": event.event ?: @"message",
+      @"data": RCTNullIfNil(data),
+      @"id": eventSource.reactTag
+    }];
+}
+
 
 RCT_EXPORT_METHOD(close:(nonnull NSNumber *)sourceID)
 {
